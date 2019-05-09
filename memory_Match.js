@@ -1,6 +1,21 @@
+let interval;
+let started = false;
+let time = 0;
+
+let clickedArray = [];
+
 setUp();
 
 
+function startTimer(){
+    if(started == false){
+        interval = setInterval(function(){
+            time++;
+            document.getElementById("timer").innerHTML = "Time Elapsed: " + time;
+        },1000)
+        started = true;
+    }
+}
 
 
 function randomAnswers(){
@@ -12,14 +27,18 @@ function randomAnswers(){
     console.log(answers);
 }
 
+function reveal(cell){
+    cell.style.backgroundColor ="red";
+    cell.innerHTML = cell.value;
+    cell.clicked = true;
+}
 
 function setUp(){
     let answers = randomAnswers();
     let grid = document.getElementsByClassName("cell");
-    let i;
-    
-    for(i=0; i<grid.length; i++){
-        let cell = grid[i];
+    let cell;
+    for(let i=0; i<grid.length; i++){
+        cell = grid[i];
         cell.completed = false;
         cell.clicked = false;
         cell.value = answers[i];
@@ -32,7 +51,17 @@ function setUp(){
             if(this.completed == false && this.clicked == false)
                this.style.background = "blue";
         });
+
+        cell.addEventListener('click',function(){
+            if(this.clicked == false && this.completed == false){
+                clickedArray.push(this);
+                reveal(this);
+            }
+            startTimer();
+
+        });
+        
+        
     }
     
-
 }
