@@ -3,26 +3,35 @@ html, body {
     margin: 10px;
   }
 
-.container{
+/* .container{
     display:grid;
     justify-content: center;
     grid-template-columns: 100px 100px  100px; 
     grid-template-rows: 100px 100px  100px;
     grid-gap: 3px;
+} */
+
+section{
+    display:grid;
+    justify-content: center;
+    grid-template-columns: 100px 100px  100px; 
+    grid-template-rows: 100px 100px  100px;
+    grid-gap: 3px;
+    color: #ffeead;
 }
 
-.container > div {
+section > div {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2em;
-    color: #ffeead;
+    background-color: #136cf1;
 }
 
 
 
-.container > div:nth-child(1n) {
-  background-color: #136cf1;	
+.section > div:nth-child(1n) {
+  	
 }
 
 
