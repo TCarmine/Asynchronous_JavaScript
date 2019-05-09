@@ -1,11 +1,10 @@
 let cont = document.getElementById ("gridTable");
 let p = document.getElementById("timer");
-let grid = document.getElementsByClassName("cell");
+
 
 let interval;
 let started = false;
 let time = 0;
-let cell;
 let clickedArray = [];
 let answers = [1,1,2,2,3,3,4,4,5];
 let ready = true;
@@ -32,9 +31,9 @@ function randomAnswers(){
     return answers;
 }
 
-function hide(){
+function hide(cell){
     cell.style.backgroundColor = "blue";
-    // cell.innerHTML = "";
+    cell.innerHTML = "";
     cell.clicked = false;
 }
 function reveal(cell){
@@ -43,17 +42,19 @@ function reveal(cell){
     cell.clicked = true;
 }
 function complete(cell){
-    numCompleted++;
     cell.completed = true;
+    numCompleted++;
     cell.style.backgroundColor = "purple";
 }
 
 function setUp(){
+    let grid = document.getElementsByName("cell");
     let answers = randomAnswers();
   
     
     for(let i=0; i<grid.length; i++){
-            cell = grid[i];
+            let cell = grid[i];
+
             cell.completed = false;
             cell.clicked = false;
             cell.value = answers[i];
@@ -62,6 +63,7 @@ function setUp(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "orange";
             });
+
             cell.addEventListener("mouseleave",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "blue";
@@ -72,21 +74,25 @@ function setUp(){
                 if(ready == false){
                     return;
                 }
+                startTimer();
                 if(this.clicked == false && this.completed == false){
                     clickedArray.push(this);
                     reveal(this);
+                  
                 }
-                startTimer();
-                if(clickedArray.length==2){
+                
+                if(clickedArray.length == 2){
                     if(clickedArray[0]==clickedArray[1].value){
+                        ready = false;
                         complete(clickedArray[0]); 
                         complete(clickedArray[1]);
-
-                        clickedArray =[];
-
-                        if(numCompleted==8){
-                            alert("You won in "+ time + " seconds!" );
-                            clearInterval(interval);
+                        clickedArray = []; 
+                        ready = true;
+                        cont.style.border = "2px solid black";
+                    
+                        if( numCompleted == 8 ){
+                        alert("You won in "+ time + " seconds!" );
+                        clearInterval(interval);
                         }
 
                     }else{
@@ -95,12 +101,14 @@ function setUp(){
                         
                           
                         setTimeout(function(){
+                            
                             hide(clickedArray[0]);
                             hide(clickedArray[1]);
                             clickedArray = []; 
-                            cont.style.border = "2px solid black";
                             ready = true;
-                            console.log(i);
+                            cont.style.border = "2px solid black";
+                            
+                            
     
                         },900);
                         
