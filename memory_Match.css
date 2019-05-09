@@ -3,14 +3,6 @@ html, body {
     margin: 10px;
   }
 
-/* .container{
-    display:grid;
-    justify-content: center;
-    grid-template-columns: 100px 100px  100px; 
-    grid-template-rows: 100px 100px  100px;
-    grid-gap: 3px;
-} */
-
 section{
     display:grid;
     justify-content: center;
@@ -29,9 +21,5 @@ section > div {
 }
 
 
-
-.section > div:nth-child(1n) {
-  	
-}
 
 

@@ -1,5 +1,5 @@
 let cont = document.getElementsByClassName("container");
-
+let p = document.getElementById("timer");
 let interval;
 let started = false;
 let time = 0;
@@ -16,7 +16,7 @@ function startTimer(){
     if(started == false){
         interval = setInterval(function(){
             time++;
-            document.getElementById("timer").innerHTML = "Time Elapsed: " + time;
+            p.innerHTML = "Time Elapsed: " + time;
         },1000)
         started = true;
     }
@@ -65,6 +65,7 @@ function setUp(){
         cell.addEventListener("mouseleave",function(){
             if(this.completed == false && this.clicked == false)
                this.style.background = "blue";
+
         });
 
         cell.addEventListener('click',function(){
