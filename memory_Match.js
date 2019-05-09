@@ -78,11 +78,11 @@ function setUp(){
                 if(this.clicked == false && this.completed == false){
                     clickedArray.push(this);
                     reveal(this);
-                  
+                    console.log(clickedArray[0], clickedArray[1]);
                 }
                 
                 if(clickedArray.length == 2){
-                    if(clickedArray[0]==clickedArray[1].value){
+                    if(clickedArray[0].value == clickedArray[1].value){
                         ready = false;
                         complete(clickedArray[0]); 
                         complete(clickedArray[1]);
