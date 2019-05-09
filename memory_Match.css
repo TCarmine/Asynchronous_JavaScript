@@ -1,5 +1,28 @@
+html, body {
+    background-color: #ffeead;
+    margin: 10px;
+  }
+
 .container{
     display:grid;
+    justify-content: center;
     grid-template-columns: 100px 100px  100px; 
     grid-template-rows: 100px 100px  100px;
+    grid-gap: 3px;
 }
+
+.container > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: #ffeead;
+}
+
+
+
+.container > div:nth-child(1n) {
+  background-color: #136cf1;	
+}
+
+
