@@ -1,8 +1,10 @@
-let grid = document.getElementsByTagName("div");
-let answers = [1,1,2,2,3,3,4,4,5];
+setUp();
+
+
+
 
 function randomAnswers(){
-   
+    let answers = [1,1,2,2,3,3,4,4,5];
     answers.sort(function(item){
         return .5 - Math.random();
     })
@@ -12,11 +14,11 @@ function randomAnswers(){
 
 
 function setUp(){
-    console.log(grid);
     let answers = randomAnswers();
-
-    for(let i=0;i<grid.length;i++){
-        let cell = grid[i];
+    let grid = document.getElementsByTagName("div");
+    let i;
+    let cell = grid[i];
+    for(i=0; i<grid.length; i++){
         cell.completed = false;
         cell.clicked = false;
         cell.value = answers[i];
