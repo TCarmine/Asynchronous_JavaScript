@@ -15,21 +15,24 @@ function randomAnswers(){
 
 function setUp(){
     let answers = randomAnswers();
-    let grid = document.getElementsByTagName("div");
+    let grid = document.getElementsByClassName("cell");
     let i;
-    let cell = grid[i];
+    
     for(i=0; i<grid.length; i++){
+        let cell = grid[i];
         cell.completed = false;
         cell.clicked = false;
         cell.value = answers[i];
+
+        cell.addEventListener("mouseenter",function(){
+            if(this.completed == false && this.clicked == false)
+               this.style.background = "orange";
+        });
+        cell.addEventListener("mouseleave",function(){
+            if(this.completed == false && this.clicked == false)
+               this.style.background = "blue";
+        });
     }
-    cell.addEventListener("mouseenter",function(){
-        if(this.completed == false && this.clicked == false)
-           this.style.background = "orange";
-    })
-    cell.addEventListener("mouseleave",function(){
-        if(this.completed == false && this.clicked == false)
-           this.style.background = "blue";
-    })
+    
 
 }
