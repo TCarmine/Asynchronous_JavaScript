@@ -6,11 +6,7 @@ let interval;
 let started = false;
 let time = 0;
 
-let answersWords = { 
-    "casa" : "house",
-    "cavallo":"hourse",
-    "ostetrica":"midwife" 
-}
+
 
 let clickedArray = [];
 let answers = [1,1,2,2,3,3,4,4,5];
@@ -57,7 +53,7 @@ function complete(cell){
 function setUp(){
     let grid = document.getElementsByName("cell");
     let answers = randomAnswers();
-  
+    console.log(answers)
     
     for(let i=0; i<grid.length; i++){
             let cell = grid[i];
@@ -65,6 +61,7 @@ function setUp(){
             cell.completed = false;
             cell.clicked = false;
             cell.value = answers[i];
+
 
             cell.addEventListener("mouseenter",function(){
                 if(this.completed == false && this.clicked == false)
