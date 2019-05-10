@@ -70,6 +70,13 @@ function setUp(){
 
             });
 
+            document.addEventListener('keydown', function(event){
+                if(event.key > 0 && event.key < 10 ){
+                    grid[event.key - 1].click();
+                }
+            
+            });
+
             cell.addEventListener('click',function(){
                 if(ready == false){
                     return;
