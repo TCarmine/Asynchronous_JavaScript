@@ -5,8 +5,10 @@ let numCompleted = 0;
 
  let answers = [1,2,3,4,5,6,7,8,9];
 
- let engWords = ['a','b','c','d','e','f','g','h','i']
+ let engWords = ['att','btt','ctt','dtt','tte','ftt','ttg','tth','tti']
 
+
+ let answers2 = [1,2,3,4,5,6,7,8,9];
 let myMap = new Map();
 // myMap = ([],[],[],[],[],[],[],[],[]);
 // myMap.set('0', 'foo');
@@ -25,13 +27,23 @@ var newMap = new Map();
 
 // keys.forEach((key, i) => result[key] = values[i]);
 
+
+
 for( val in answers){
-   for(word in engWords){
-       const nk =  answers[val];
-       const v =  engWords[word];
-       newMap.set(nk,v);
-   }
+    const nk =  answers[val];
+    Array.from(newMap.keys()).forEach((k, i) => {
+            const v = newMap.set(i) = engWords[i]
+            newMap.set(nk,v);
+    });
 }
+
+
+
+// for( val in engWords){
+//     const v =  engWords[val];
+//     newMap.set(nk,v);
+// }
+
 
 // Array.from(myMap.keys()).forEach((k, i) => {
 //   const v = myMap.get(k);
