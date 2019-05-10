@@ -5,6 +5,13 @@ let p = document.getElementById("timer");
 let interval;
 let started = false;
 let time = 0;
+
+let answersWords = { 
+    "casa" : "house",
+    "cavallo":"hourse",
+    "ostetrica":"midwife" 
+}
+
 let clickedArray = [];
 let answers = [1,1,2,2,3,3,4,4,5];
 let ready = true;
