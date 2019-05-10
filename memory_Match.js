@@ -69,12 +69,16 @@ function setUp(){
                 this.style.background = "blue";
 
             });
-
+            //for keyboard input 
             document.addEventListener('keydown', function(event){
                 if(event.key > 0 && event.key < 10 ){
                     grid[event.key - 1].click();
                 }
             
+            });
+            // for reload the page on restart button click
+            document.getElementById('restart').addEventListener('click', function(){
+                location.reload();
             });
 
             cell.addEventListener('click',function(){
