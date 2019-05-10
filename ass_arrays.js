@@ -5,10 +5,8 @@ let numCompleted = 0;
 
  let answers = [1,2,3,4,5,6,7,8,9];
 
- let engWords = ['att','btt','ctt','dtt','tte','ftt','ttg','tth','tti']
+ let engWords = ['ffa','trhb','tzc','55d','55e','55f','55g','55h','55z']
 
-
- let answers2 = [1,2,3,4,5,6,7,8,9];
 let myMap = new Map();
 // myMap = ([],[],[],[],[],[],[],[],[]);
 // myMap.set('0', 'foo');
@@ -27,23 +25,34 @@ var newMap = new Map();
 
 // keys.forEach((key, i) => result[key] = values[i]);
 
-
-
 for( val in answers){
-    const nk =  answers[val];
-    Array.from(newMap.keys()).forEach((k, i) => {
-            const v = newMap.set(i) = engWords[i]
-            newMap.set(nk,v);
-    });
+    
+       const nk =  answers[val];
+       engWords.forEach(function(element) {
+        //  console.log(element);
+        // only the array produce a map to [val] time it, or 
+        //interesting also the letter of idex[val][0] etc--> newMap.set(nk,engWords[val][0]);
+         //   1  ->  f 
+         //   2  ->  t 
+         //   3  ->  t 
+         //   4  ->  5 
+         //   5  ->  5 
+         //   6  ->  5 
+         //   7  ->  5 
+         //   8  ->  5 
+         //   9  ->  5 
+        
+
+        newMap.set(nk,engWords[val]);  
+           
+       })
+        
+    //    Array.from(myMap.keys()).forEach((k, i) => {
+    //       const value = newMap.get(k);
+    //       newMap.set(nk,value);
+    //    })    
+
 }
-
-
-
-// for( val in engWords){
-//     const v =  engWords[val];
-//     newMap.set(nk,v);
-// }
-
 
 // Array.from(myMap.keys()).forEach((k, i) => {
 //   const v = myMap.get(k);
