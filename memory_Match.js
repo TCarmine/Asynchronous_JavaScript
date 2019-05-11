@@ -54,8 +54,7 @@ function complete(cell){
 function setUp(){
     let grid = document.getElementsByName("cell");
     let answers = randomAnswers();
-    console.log(answers)
-    
+       
     for(let i=0; i<grid.length; i++){
             let cell = grid[i];
 
