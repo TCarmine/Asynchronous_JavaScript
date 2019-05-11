@@ -1,15 +1,19 @@
 html, body {
-    background-color: #ffeead;
-    margin: 10px;
+  display: grid;
+  background-color: #ffeead;
+  margin: 10px;
+
   }
 
-section{
-    display:grid;
+.container{
+    
+    /* display:grid; */
+    display: inline-grid;
     justify-content: center;
     grid-template-columns: 100px 100px  100px; 
     grid-template-rows: 100px 100px  100px;
     grid-gap: 3px;
-    color: #ffeead;
+    border: 1px solid black;
 }
 
 section > div {
@@ -20,6 +24,8 @@ section > div {
     background-color: #136cf1;
 }
 
-
+.container > div:nth-child(1n) {
+  background-color: #136cf1;	
+}
 
 
