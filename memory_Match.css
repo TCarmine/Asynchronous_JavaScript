@@ -16,14 +16,16 @@ html, body {
     border: 1px solid black;
 }
 
-section > div {
+.container > div {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2em;
-    background-color: #136cf1;
+    color: #ffeead;
 }
 
-
+.container > div:nth-child(1n) {
+  background-color: #136cf1;	
+}
 
 
