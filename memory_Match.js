@@ -139,7 +139,7 @@ function setUp(){
     //     // console.log('This is a better version of setInterval');
     //     clearInterval(interval);   
     //     setTimeout(interval, 10000);
-    // }();
+    // }).bind(this), 3000); 
     timerId = setTimeout(function(){
                     
         clearInterval(interval);
@@ -148,6 +148,6 @@ function setUp(){
             alert("You are now logged out.")
             //location.href = 'logout.html'
         }
-    },10000);  
+    }.bind(this), 11000);
     
-timerId();
+// timerId();
