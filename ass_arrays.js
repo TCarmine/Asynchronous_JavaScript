@@ -14,10 +14,10 @@ let numCompleted = 0;
 }
 
 answers = randomAnswers();
- let engWords = ['ffa','trhb','tzc','55d','55e','55f','55g','55h','55z']
+ let engWords = ['house','giftb','zoo','tidy','flat','to play',' to see','boy','ice cream']
 
 
- let itaWords = ['casa','regalo','zoo','raf','bip','lap','ciccio','pasticcio','gelato'] 
+ let itaWords = ['casa','regalo','zoo','ordinato','appartamento','giocare','guardare','ragazzo','gelato'] 
 let myMap = new Map();
 // myMap = ([],[],[],[],[],[],[],[],[]);
 // myMap.set('0', 'foo');
@@ -36,28 +36,28 @@ var newMap = new Map();
 
 var newMap2 = new Map(); 
 
+var pairsMap = new Map(); 
+
 // keys.forEach((key, i) => result[key] = values[i]);
 
 for( val in answers){
  
        const nk =  answers[val];
        engWords.forEach(function(element) {
-        //  console.log(element);
-        // only the array produce a map to [val] time it, or 
-        //interesting also the letter of idex[val][0] etc--> newMap.set(nk,engWords[val][0]);
-         //   1  ->  f 
-         //   2  ->  t 
-         //   3  ->  t 
-         //   4  ->  5 
-         //   5  ->  5 
-         //   6  ->  5 
-         //   7  ->  5 
-         //   8  ->  5 
-         //   9  ->  5 
-        newMap.set(nk,engWords[val]);  
-
-           
-       })
+          //  console.log(element);
+          // only the array produce a map to [val] time it, or 
+          //interesting also the letter of idex[val][0] etc--> newMap.set(nk,engWords[val][0]);
+          //   1  ->  f 
+          //   2  ->  t 
+          //   3  ->  t 
+          //   4  ->  5 
+          //   5  ->  5 
+          //   6  ->  5 
+          //   7  ->  5 
+          //   8  ->  5 
+          //   9  ->  5 
+          newMap.set(nk,engWords[val]);  
+      })
        const jk =  answers[val];
        itaWords.forEach(function(element) {
         //  console.log(element);
@@ -81,8 +81,24 @@ for( val in answers){
     //       const value = newMap.get(k);
     //       newMap.set(nk,value);
     //    })    
+}
+
+for( val in engWords){
+ 
+  const nk =  engWords[val];
+  itaWords.forEach(function(element) {
+   
+  pairsMap.set(nk,itaWords[val]);  
+
+      
+})
+   Array.from(myMap.keys()).forEach((k, i) => {
+      const value = newMap.get(k);
+      console.log(value);
+   })    
 
 }
+
 
 // Array.from(myMap.keys()).forEach((k, i) => {
 //   const v = myMap.get(k);
@@ -94,23 +110,66 @@ for( val in answers){
 for (let [nk, v] of newMap){
   console.log(nk, " -> ", v)
 }
+
+console.log('------')
 for (let [jk, v] of newMap2){
   console.log(jk, " -> ", v)
 }
 
+for (let [b, z] of pairsMap){
+  console.log(b, " -> ", z)
+}
 
-Array.from(newMap.keys()).forEach((k, i) => {
-    const ita = newMap.get(k);
-    clickedArray.push(ita);
+  // for (const v of newMap.values()) {
+  //     if(v == 'ffa'){
+  //       clickedArray.push(v);
+  //       console.log(clickedArray); 
+  //       clickedArray.push(newMap.values().next());
+  //       console.log(clickedArray); 
+  //     }
+  // }  
 
-})    
-Array.from(newMap.keys()).forEach((k, i) => {
-    const eng = newMap2.get(k);
-    clickedArray.push(eng);
-})
+let couples = {
+  'id': {'ffa':'ciccio'},
+  'pippo': {'tzc':'lap'}
+}
+
+// for (const key of Object.keys(couples)) {
+//   if(couples[key]=='ciccio'){
+//       console.log(key + " -> " + couples[key]); 
+//       console.log(key, couples[key]);
+//   }
+// }
+
+// couples.filter(obj => obj.id =='ciccio');
+//     console.log(id + " -> " + obj[id]);    
+
+  
+      // Array.from(newMap.keys()).forEach((k, i) => {
+//     const ita = newMap.get(k);
+//     if(newMap.values() =='raf'){
+//         console.log('found');
+//         console.log(ita)
+//     }
+//     clickedArray.push(ita);
+
+// Array.from(newMap.keys()).forEach((k, i) => {
+//        const ita = newMap.get(k);
+//   if(newMap.has(3)){
+//     clickedArray.push(i);
+//  }
+// console.log(clickedArray);
+// })
 
 
-console.log(clickedArray);
+// })    
+// Array.from(newMap.keys()).forEach((k, i) => {
+//     const eng = newMap2.get(k);
+//     clickedArray.push(eng);
+// })
+
+
+// console.log(clickedArray);
 
 // console.log(mapIter.next().value); // ["0", "foo"]
 // console.log(mapIter.next().value); // [1, "bar"]
