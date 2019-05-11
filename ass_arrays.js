@@ -5,8 +5,19 @@ let numCompleted = 0;
 
  let answers = [1,2,3,4,5,6,7,8,9];
 
+
+ function randomAnswers(){
+  answers.sort(function(item){
+     return .6 - Math.random();
+ })
+ return answers;
+}
+
+answers = randomAnswers();
  let engWords = ['ffa','trhb','tzc','55d','55e','55f','55g','55h','55z']
 
+
+ let itaWords = ['casa','regalo','zoo','raf','bip','lap','ciccio','pasticcio','gelato'] 
 let myMap = new Map();
 // myMap = ([],[],[],[],[],[],[],[],[]);
 // myMap.set('0', 'foo');
@@ -23,10 +34,12 @@ myMap.set({}, 'baz');
 
 var newMap = new Map(); 
 
+var newMap2 = new Map(); 
+
 // keys.forEach((key, i) => result[key] = values[i]);
 
 for( val in answers){
-    
+ 
        const nk =  answers[val];
        engWords.forEach(function(element) {
         //  console.log(element);
@@ -41,9 +54,26 @@ for( val in answers){
          //   7  ->  5 
          //   8  ->  5 
          //   9  ->  5 
-        
-
         newMap.set(nk,engWords[val]);  
+
+           
+       })
+       const jk =  answers[val];
+       itaWords.forEach(function(element) {
+        //  console.log(element);
+        // only the array produce a map to [val] time it, or 
+        //interesting also the letter of idex[val][0] etc--> newMap.set(nk,engWords[val][0]);
+         //   1  ->  f 
+         //   2  ->  t 
+         //   3  ->  t 
+         //   4  ->  5 
+         //   5  ->  5 
+         //   6  ->  5 
+         //   7  ->  5 
+         //   8  ->  5 
+         //   9  ->  5 
+        newMap2.set(jk,itaWords[val]);  
+        
            
        })
         
@@ -63,6 +93,9 @@ for( val in answers){
 // print map
 for (let [nk, v] of newMap){
   console.log(nk, " -> ", v)
+}
+for (let [jk, v] of newMap2){
+  console.log(jk, " -> ", v)
 }
 
 
@@ -103,16 +136,6 @@ for (let [nk, v] of newMap){
 //     [2,"hourse"],
 //     [3,"midwife"]] 
 // )
-
-
-function randomAnswers(){
-    answers.next().sort(function(item){
-       return .6 - Math.random();
-   })
-   return answers;
-}
-
-// answers.randomAnswers();
 
 
 
