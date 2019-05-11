@@ -13,6 +13,7 @@ let answers = [1,1,2,2,3,3,4,4,5];
 
 let ready = true;
 let numCompleted = 0;
+let timerId;
 
 setUp();
 
@@ -122,18 +123,31 @@ function setUp(){
                             clickedArray = []; 
                             ready = true;
                             cont.style.border = "2px solid black";
-                            
-                            
-    
                         },900);
                         
                     }
                     
                 }
             });
-        
-
-        
+            
+            };
+            
     }
+
+    // timerId = function interval() {
+    //     // do things
+    //     // console.log('This is a better version of setInterval');
+    //     clearInterval(interval);   
+    //     setTimeout(interval, 10000);
+    // }();
+    timerId = setTimeout(function(){
+                    
+        clearInterval(interval);
+        
+        function logout() {
+            alert("You are now logged out.")
+            //location.href = 'logout.html'
+        }
+    },10000);  
     
-}
+timerId();
