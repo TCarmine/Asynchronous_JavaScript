@@ -98,18 +98,19 @@ for (let [jk, v] of newMap2){
   console.log(jk, " -> ", v)
 }
 
-for (let [nk, v] of newMap){
-      Array.from(newMap.keys()).forEach((k, i) => {
-          const ita = myMap.get(k);
-          clickedArray.push(ita);
 
-      })    
-      Array.from(newMap.keys()).forEach((k, i) => {
-          const eng = myMap2.get(k);
-          clickedArray.push(eng);
-      })
-}
+Array.from(newMap.keys()).forEach((k, i) => {
+    const ita = newMap.get(k);
+    clickedArray.push(ita);
 
+})    
+Array.from(newMap.keys()).forEach((k, i) => {
+    const eng = newMap2.get(k);
+    clickedArray.push(eng);
+})
+
+
+console.log(clickedArray);
 
 // console.log(mapIter.next().value); // ["0", "foo"]
 // console.log(mapIter.next().value); // [1, "bar"]
