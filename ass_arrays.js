@@ -13,8 +13,10 @@ let numCompleted = 0;
  return answers;
 }
 
+let m = ['casa','house'];
+
 answers = randomAnswers();
- let engWords = ['house','giftb','zoo','tidy','flat','to play',' to see','boy','ice cream']
+ let engWords = ['house','gift','zoo','tidy','flat','to play',' to see','boy','ice cream']
 
 
  let itaWords = ['casa','regalo','zoo','ordinato','appartamento','giocare','guardare','ragazzo','gelato'] 
@@ -41,7 +43,6 @@ var pairsMap = new Map();
 // keys.forEach((key, i) => result[key] = values[i]);
 
 for( val in answers){
- 
        const nk =  answers[val];
        engWords.forEach(function(element) {
           //  console.log(element);
@@ -85,19 +86,25 @@ for( val in answers){
 
 for( val in engWords){
  
-  const nk =  engWords[val];
-  itaWords.forEach(function(element) {
-   
-  pairsMap.set(nk,itaWords[val]);  
+        const nk =  engWords[val];
+            itaWords.forEach(function(element) {
+            
+            pairsMap.set(nk,itaWords[val]);  
+        } )
+}        
 
-      
-})
-   Array.from(myMap.keys()).forEach((k, i) => {
-      const value = newMap.get(k);
-      console.log(value);
-   })    
+// get a value from a Map after a string condition
+Array.from(newMap.keys()).forEach((k, i) => {
+      var values = newMap.get(k);
+      for(let j = 0;j < m.length ; i++){
+        if(m[i] == values){
+          
+          console.log(newMap.get(k));
+        }  
+      }   
+      console.log(m[k]);
+})    
 
-}
 
 
 // Array.from(myMap.keys()).forEach((k, i) => {
@@ -107,14 +114,14 @@ for( val in engWords){
 // });
 
 // print map
-for (let [nk, v] of newMap){
-  console.log(nk, " -> ", v)
-}
+// for (let [nk, v] of newMap){
+//   console.log(nk, " -> ", v)
+// }
 
-console.log('------')
-for (let [jk, v] of newMap2){
-  console.log(jk, " -> ", v)
-}
+// console.log('------')
+// for (let [jk, v] of newMap2){
+//   console.log(jk, " -> ", v)
+// }
 
 for (let [b, z] of pairsMap){
   console.log(b, " -> ", z)
