@@ -46,10 +46,10 @@
    
 // }
 
-// for( val in engWords){
+ for( val in engWords){
  
-//         const nk =  engWords[val];
-//             itaWords.forEach(function(element) {
+         const nk =  engWords[val];
+             itaWords.forEach(function(element) {
             
             pairsMap.set(nk,itaWords[val]);  
         } )
@@ -59,12 +59,10 @@
 Array.from(pairsMap.keys()).forEach((k, i) => {
   var values = pairsMap.get(k);
   for(let i = 0;i < m.length ; i++){
-    if(m[i] == values){
-      
-      console.log(m[i]);
-    }  
+      if(m[i] == values){
+          console.log(m[i]);
+      }  
   }   
-  
 })    
 
 // console.log('----------');
