@@ -26,7 +26,7 @@ let engWords = ['house','gift','zoo','tidy','flat','to play',' to see','boy','ic
 
 let itaWords = ['casa','regalo','zoo','ordinato','appartamento','giocare','guardare','ragazzo','gelato'] 
 
-let myMap = new Map();
+
 
 let engMapToNum = new Map(); 
 
@@ -105,34 +105,38 @@ function setUp(){
        } )
     }  
     
-    for(let i=0; i<answers.length; i++){
-        cell[i] = grid[i]; 
+    
+    Array.from(engMapToNum.keys()).forEach((k, i) => {
         
-        cell.completed = false;
-        cell.clicked = false;
-
+        for(let j=0; j<answers.length; j++){
+            cell[j] = grid[j]; 
         
-        Array.from(engMapToNum.keys()).forEach((k, j) => {
-            cell[i].value = engMapToNum.get(k);
-            
-        })
+            cell.completed = false;
+            cell.clicked = false;
+            let el = engMapToNum.get(k);
+            // console.log(k);
+            cell[j].value = el;
+            console.log(cell[j].value);
         
-    }    
+        }
+    })    
 
     console.log(' ********** ' )
     
-    for(let i=0; i<answers.length; i++){
-        box[i]  = boxes[i];
-            
-        box.completed = false;
-        box.clicked = false;
-
-        Array.from(itaMapToNum.keys()).forEach((k, j) => {
-            box[i].value = itaMapToNum.get(k);
-      
-        })
-
-    }
+    Array.from(itaMapToNum.keys()).forEach((k, z) => {
+        
+        for(let j=0; j<answers.length; j++){
+            box[j] = box[j]; 
+        
+            box.completed = false;
+            box.clicked = false;
+            let el = itaMapToNum.get(k);
+            // console.log(k);
+            box[j].value = el;
+            console.log(box[j].value);
+        
+        }
+    })    
 
     
     for(let i=0; i<answers.length; i++){
