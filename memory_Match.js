@@ -1,12 +1,9 @@
 let cont = document.getElementById ("gridTable");
 let p = document.getElementById("timer");
 
-
 let interval;
 let started = false;
 let time = 0;
-
-
 
 let clickedArray = [];
 let answers = [1,1,2,2,3,3,4,4,5];
@@ -14,6 +11,20 @@ let answers = [1,1,2,2,3,3,4,4,5];
 let ready = true;
 let numCompleted = 0;
 let timerId;
+
+let engWords = ['house','gift','zoo','tidy','flat','to play',' to see','boy','ice cream']
+
+
+let itaWords = ['casa','regalo','zoo','ordinato','appartamento','giocare','guardare','ragazzo','gelato'] 
+
+let myMap = new Map();
+
+
+let engMapToNum = new Map(); 
+
+let itaMapToNum = new Map(); 
+
+let pairsMap = new Map(); 
 
 setUp();
 
@@ -55,7 +66,8 @@ function complete(cell){
 function setUp(){
     let grid = document.getElementsByName("cell");
     let answers = randomAnswers();
-       
+     
+    
     for(let i=0; i<grid.length; i++){
             let cell = grid[i];
 

@@ -13,7 +13,7 @@ let numCompleted = 0;
  return answers;
 }
 
-let m = ['house','casa'];
+let m = ['house', 'casa'];
 
 answers = randomAnswers();
 let engWords = ['house','gift','zoo','tidy','flat','to play',' to see','boy','ice cream']
@@ -44,7 +44,7 @@ for( val in answers){
        })
 }
 
- for( val in engWords){
+for( val in engWords){
  
          const nk =  engWords[val];
              itaWords.forEach(function(element) {
@@ -53,35 +53,46 @@ for( val in answers){
         } )
 }        
 
-// // get a value from a Map after a string condition
-// Array.from(pairsMap.keys()).forEach((k, i) => {
-//   var values = pairsMap.get(k);
-//   for(let i = 0;i < m.length ; i++){
-//       if(m[i] == values){
-//           console.log(m[i]);
-//       }  
-//   }   
-// })    
 
 
 // get a value from a Map after a string condition
-Array.from(itaMapToNum.keys()).forEach((k, i) => {
-  var values = itaMapToNum.get(k);
-  for(let i = 0;i < m.length ; i++){
-      if(m[i] == values){
-          console.log(m[i]);
+Array.from(pairsMap.keys()).forEach((k, i) => {
+  let value = pairsMap.get(k);
+  let key = pairsMap.keys();
+      for(let j = 0;j < m.length ; j++){
+          if(m[j] == value){
+              console.log(m[j]);
+              // console.log(pairsMap.keys()=="house")  
+              // check if the property/key is defined in the object itself, not in parent
+              console.log(j);
+              if(k == m[j+1] || k == m[j-1] ){
+              
+                console.log(k);       
+              }   
+          }
+                  
       }
-  }   
-}) 
+})    
 
-Array.from(engMapToNum.keys()).forEach((k, i) => {
-  var values = engMapToNum.get(k);
-  for(let i = 0;i < m.length ; i++){
-      if(m[i] == values){
-          console.log(m[i]);
-      }
-  }   
-}) 
+
+// get a value from a Map after a string condition
+      // Array.from(itaMapToNum.keys()).forEach((k, i) => {
+      //   var values = itaMapToNum.get(k);
+      //   for(let i = 0;i < m.length ; i++){
+      //       if(m[i] == values){
+      //           console.log(m[i]);
+      //       }
+      //   }   
+      // }) 
+
+      // Array.from(engMapToNum.keys()).forEach((k, i) => {
+      //   var values = engMapToNum.get(k);
+      //   for(let i = 0;i < m.length ; i++){
+      //       if(m[i] == values){
+      //           console.log(m[i]);
+      //       }
+      //   }   
+      // }) 
 
 
 console.log('----------');
