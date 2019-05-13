@@ -38,7 +38,7 @@ let pairsMap = new Map();
 
 function randomAnswers(){
     answers.sort(function(item){
-       return .6 - Math.random();
+       return .7 - Math.random();
    })
    return answers;
 }
@@ -86,6 +86,7 @@ function setUp(){
           
          engMapToNum.set(nk,engWords[val]);  
         })
+        answers = randomAnswers(); 
         const jk =  answers[val];
         itaWords.forEach(function(element) {
          itaMapToNum.set(jk,itaWords[val]);  
@@ -101,7 +102,7 @@ function setUp(){
        } )
     }  
     
-    for(let i=0; i<grid.length; i++){
+    for(let i=0; i<answers.length; i++){
             cell = grid[i]; 
             box  = boxes[i];
  
@@ -112,11 +113,11 @@ function setUp(){
             box.clicked = false;
 
             Array.from(engMapToNum.keys()).forEach((k, i) => {
-                cell.value = k;
+                cell.value = engMapToNum.get(k);
             })
             
             Array.from(itaMapToNum.keys()).forEach((k, i) => {
-                box.value = k;
+                box.value = itaMapToNum.get(k);
             })
 
 
