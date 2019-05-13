@@ -192,15 +192,7 @@ function setUp(){
             });
             
     }
-}             
-    
 
-    // timerId = function interval() {
-    //     // do things
-    //     // console.log('This is a better version of setInterval');
-    //     clearInterval(interval);   
-    //     setTimeout(interval, 10000);
-    // }).bind(this), 3000); 
     timerId = setTimeout(function(){
                     
         clearInterval(interval);
@@ -210,8 +202,12 @@ function setUp(){
             //location.href = 'logout.html'
         }
     }.bind(this), 11000);
+}             
     
-// timerId();
+
+
+    
+
 
 
 
