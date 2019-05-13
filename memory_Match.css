@@ -21,10 +21,31 @@ html, body {
     justify-content: center;
     align-items: center;
     font-size: 2em;
-    color: #ffeead;
 }
-
 
 .container > div:nth-child(1n) {
   background-color: #136cf1;	
+}
+
+
+.container.box{
+    
+  /* display:grid; */
+  display: inline-grid;
+  justify-content: center;
+  grid-template-columns: 100px 100px  100px 100px 100px 100px 100px 100px 100px; 
+  grid-template-rows: 100px;
+  grid-gap: 3px;
+  border: 1px solid black;
+}
+
+.container.box > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+.container.box >  div:nth-child(1n) {
+  background-color: #3ff113;	
 }

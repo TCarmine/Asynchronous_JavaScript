@@ -40,6 +40,7 @@ function startTimer(){
 }
 
 
+
 function randomAnswers(){
      answers.sort(function(item){
         return .6 - Math.random();
@@ -66,15 +67,35 @@ function complete(cell){
 function setUp(){
     let grid = document.getElementsByName("cell");
     let answers = randomAnswers();
-     
+    for( val in answers){
+        const nk =  answers[val];
+        engWords.forEach(function(element) {
+          
+         engMapToNum.set(nk,engWords[val]);  
+        })
+        const jk =  answers[val];
+        itaWords.forEach(function(element) {
+         itaMapToNum.set(jk,itaWords[val]);  
+        })
+    } 
+
+    for( val in engWords){
+ 
+        const nk =  engWords[val];
+            itaWords.forEach(function(element) {
+           
+           pairsMap.set(nk,itaWords[val]);  
+       } )
+    }  
     
     for(let i=0; i<grid.length; i++){
-            let cell = grid[i];
+            let cellmatrix = grid[i];
 
             cell.completed = false;
             cell.clicked = false;
-            cell.value = answers[i];
-
+            for( val in engWords)
+              cell.value = engMapToNum[val];
+            }
 
             cell.addEventListener("mouseenter",function(){
                 if(this.completed == false && this.clicked == false)
