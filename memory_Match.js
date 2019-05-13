@@ -126,7 +126,7 @@ function setUp(){
     Array.from(itaMapToNum.keys()).forEach((k, z) => {
         
         for(let j=0; j<answers.length; j++){
-            box[j] = box[j]; 
+            box[j] = boxes[j]; 
         
             box.completed = false;
             box.clicked = false;
