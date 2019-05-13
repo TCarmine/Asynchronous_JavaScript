@@ -5,9 +5,9 @@ let grid = document.getElementsByName("cell");
 let boxes = document.getElementsByName("box");
 let p = document.getElementById("timer");
 
-let cell;
-console.log(cell);
-let box;
+let cell=[];
+
+let box=[];
 
 
 let interval;
@@ -58,8 +58,6 @@ setUp();
 
 
 
-
-
 function hide(cell){
     cell.style.backgroundColor = "blue";
     cell.innerHTML = "";
@@ -91,73 +89,55 @@ function setUp(){
    
     answers = randomAnswers();
     for( el in answers){
-
+          
         const jk =  answers[el];
         itaWords.forEach(function(element) {
             itaMapToNum.set(jk,itaWords[el]);  
         })
     }
-
+    answers = randomAnswers(); 
     for( val in engWords){
- 
+        
         const nk =  engWords[val];
             itaWords.forEach(function(element) {
            
            pairsMap.set(nk,itaWords[val]);  
        } )
     }  
+    
+    for(let i=0; i<answers.length; i++){
+        cell[i] = grid[i]; 
+        
+        cell.completed = false;
+        cell.clicked = false;
 
-    for(let i=0; i<answers.length; i++){
-        cell = grid[i]; 
-        console.log(cell);
-        answers = randomAnswers();
-        console.log(answers);
-        Array.from(engMapToNum.keys()).forEach((i, j) => {
+        
+        Array.from(engMapToNum.keys()).forEach((k, j) => {
+            cell[i].value = engMapToNum.get(k);
             
-           
-               cell.value = engMapToNum.get(i);
-         
         })
+        
     }    
+
+    console.log(' ********** ' )
+    
     for(let i=0; i<answers.length; i++){
-        box  = boxes[i];
-        console.log(boxes[i])
-        let another = answers = randomAnswers();
-        console.log(answers);
-        Array.from(itaMapToNum.keys()).forEach((i, i) => {
+        box[i]  = boxes[i];
             
-              
-              box.value = itaMapToNum.get(i);
-         
+        box.completed = false;
+        box.clicked = false;
+
+        Array.from(itaMapToNum.keys()).forEach((k, j) => {
+            box[i].value = itaMapToNum.get(k);
+      
         })
+
     }
+
+    
     for(let i=0; i<answers.length; i++){
             
  
-            cell.completed = false;
-            cell.clicked = false;
-
-            box.completed = false;
-            box.clicked = false;
-            
-            answers = randomAnswers();
-            Array.from(engMapToNum.keys()).forEach((k, j) => {
-                for(let j = 0;j < answers.length ; j++){
-               
-                   cell.value = engMapToNum.get(k);
-                }   
-            })
-            
-            answers = randomAnswers();
-            Array.from(itaMapToNum.keys()).forEach((k, j) => {
-                for(let j = 0;j < m.length ; j++){
-                  console.log(itaMapToNum.get(k));  
-                  box.value = itaMapToNum.get(k);
-                }  
-            })
-
-
-
             cell.addEventListener("mouseenter",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "orange";
@@ -201,7 +181,25 @@ function setUp(){
                 }
                 
                 if(clickedArray.length == 2){
-                    if(clickedArray[0].value == clickedArray[1].value){
+                    if(
+                        Array.from(pairsMap.keys()).forEach((k, i) => {
+                            let value = pairsMap.get(k);
+                          
+                                for(let j = 0;j < m.length ; j++){
+                                    if(m[j] == value){
+                                        console.log(m[j]);
+                                        // console.log(pairsMap.keys()=="house")  
+                                        // check if the property/key is defined in the object itself, not in parent
+                                        console.log(j);
+                                        if(k == m[j+1] || k == m[j-1] ){
+                                        
+                                        return true;     
+                                        }   
+                                    }
+                                            
+                                }
+                          })  
+                    ){
                         ready = false;
                         complete(clickedArray[0]); 
                         complete(clickedArray[1]);
