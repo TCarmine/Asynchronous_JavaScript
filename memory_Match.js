@@ -9,7 +9,7 @@ let cell=[];
 
 let box=[];
 
-
+let flag=false;
 let interval;
 let started = false;
 let time = 0;
@@ -58,20 +58,20 @@ setUp();
 
 
 
-function hide(cell){
+function hide(cell,i){
     cell.style.backgroundColor = "blue";
     cell.innerHTML = "";
     cell.clicked = false;
  }
- function reveal(cell){
-    cell.style.backgroundColor ="red";
-    cell.innerHTML = cell.value;
-    cell.clicked = true;
+ function reveal(cell[i],i){
+        cell[i].style.backgroundColor ="red";
+        cell[i].innerHTML = cell.value;
+        cell[i].clicked = true;
  }
- function complete(cell){
-    cell.completed = true;
+ function complete(cell,i){
+    cell[i].completed = true;
     numCompleted++;
-    cell.style.backgroundColor = "purple";
+    cell[i].style.backgroundColor = "purple";
  }
 
 
@@ -175,8 +175,8 @@ function setUp(){
                 }
                 startTimer();
                 if(cell.clicked == false && cell.completed == false){
-                    clickedArray.push(this);
-                    reveal(this);
+                    clickedArray.push(cell[i]);
+                    reveal(cell[i],i);
                     console.log(clickedArray[0], clickedArray[1]);
                 }
                 
@@ -184,21 +184,20 @@ function setUp(){
                     if(
                         Array.from(pairsMap.keys()).forEach((k, i) => {
                             let value = pairsMap.get(k);
-                          
+                    
                                 for(let j = 0;j < m.length ; j++){
                                     if(m[j] == value){
-                                        console.log(m[j]);
-                                        // console.log(pairsMap.keys()=="house")  
-                                        // check if the property/key is defined in the object itself, not in parent
-                                        console.log(j);
-                                        if(k == m[j+1] || k == m[j-1] ){
+                                       
+                                      if(k == m[j+1] || k == m[j-1] ){
+                                       
+                                        flag = true;
                                         
-                                        return true;     
-                                        }   
+                                      }   
                                     }
                                             
                                 }
-                          })  
+                        
+                          }) 
                     ){
                         ready = false;
                         complete(clickedArray[0]); 

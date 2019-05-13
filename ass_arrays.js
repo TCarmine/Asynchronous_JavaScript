@@ -58,24 +58,30 @@ console.log( pairsMap);
 // get a value from a Map after a string condition
 
 
+let flag = false;
+
+function checkFlag(){
      Array.from(pairsMap.keys()).forEach((k, i) => {
         let value = pairsMap.get(k);
 
             for(let j = 0;j < m.length ; j++){
                 if(m[j] == value){
-                  console.log(m[j]);   
+                   
                   if(k == m[j+1] || k == m[j-1] ){
-                     
-                     console.log(k);
+                    console.log(k);
+                    flag = true;
+                    
                   }   
                 }
                         
             }
-      })
     
+      })
+      
+    
+    }
 
-
-
+  checkFlag();
 
 console.log('----------');
 
