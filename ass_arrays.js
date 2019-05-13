@@ -94,15 +94,15 @@ for( val in engWords){
 }        
 
 // get a value from a Map after a string condition
-Array.from(newMap.keys()).forEach((k, i) => {
-      var values = newMap.get(k);
-      for(let j = 0;j < m.length ; i++){
-        if(m[i] == values){
-          
-          console.log(newMap.get(k));
-        }  
-      }   
-      console.log(m[k]);
+Array.from(pairsMap.keys()).forEach((k, i) => {
+  var values = pairsMap.get(k);
+  for(let i = 0;i < m.length ; i++){
+    if(m[i] == values){
+      
+      console.log(m[i]);
+    }  
+  }   
+  
 })    
 
 
@@ -136,10 +136,6 @@ for (let [b, z] of pairsMap){
   //     }
   // }  
 
-let couples = {
-  'id': {'ffa':'ciccio'},
-  'pippo': {'tzc':'lap'}
-}
 
 // for (const key of Object.keys(couples)) {
 //   if(couples[key]=='ciccio'){
@@ -260,31 +256,6 @@ let couples = {
 
 // console.log(obj)
 
-
-
-let answersWordsITENG = { 
-    "casa" : "house",
-    "cavallo":"hourse",
-    "ostetrica":"midwife",    
-    "a":"ab",
-    "b":"bc",
-    "c":"cd",
-    "d":"de",
-    "e":"ef",
-    "f":"fh" 
-}
-
-// let answersWordsITENG = { 
-//      "house : " "casa",
-//     "cavallo":"hourse",
-//     "ostetrica":"midwife",    
-//     "a":"ab",
-//     "b":"bc",
-//     "c":"cd",
-//     "d":"de",
-//     "e":"ef",
-//     "f":"fh" 
-// }
 
 
 
