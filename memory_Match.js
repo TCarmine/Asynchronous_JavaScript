@@ -35,8 +35,13 @@ let itaMapToNum = new Map();
 
 let pairsMap = new Map(); 
 
-setUp();
 
+function randomAnswers(){
+    answers.sort(function(item){
+       return .6 - Math.random();
+   })
+   return answers;
+}
 
 function startTimer(){
     if(started == false){
@@ -48,8 +53,27 @@ function startTimer(){
     }
 }
 
+setUp();
 
 
+
+
+
+function hide(cell){
+    cell.style.backgroundColor = "blue";
+    cell.innerHTML = "";
+    cell.clicked = false;
+ }
+ function reveal(cell){
+    cell.style.backgroundColor ="red";
+    cell.innerHTML = cell.value;
+    cell.clicked = true;
+ }
+ function complete(cell){
+    cell.completed = true;
+    numCompleted++;
+    cell.style.backgroundColor = "purple";
+ }
 
 
 function setUp(){
@@ -189,25 +213,5 @@ function setUp(){
     
 // timerId();
 
-function randomAnswers(){
-    answers.sort(function(item){
-       return .6 - Math.random();
-   })
-   return answers;
-}
 
-function hide(cell){
-   cell.style.backgroundColor = "blue";
-   cell.innerHTML = "";
-   cell.clicked = false;
-}
-function reveal(cell){
-   cell.style.backgroundColor ="red";
-   cell.innerHTML = cell.value;
-   cell.clicked = true;
-}
-function complete(cell){
-   cell.completed = true;
-   numCompleted++;
-   cell.style.backgroundColor = "purple";
-}
+
