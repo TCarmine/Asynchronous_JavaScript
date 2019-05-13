@@ -28,7 +28,6 @@ let itaWords = ['casa','regalo','zoo','ordinato','appartamento','giocare','guard
 
 let myMap = new Map();
 
-
 let engMapToNum = new Map(); 
 
 let itaMapToNum = new Map(); 
@@ -37,11 +36,13 @@ let pairsMap = new Map();
 
 
 function randomAnswers(){
-    answers.sort(function(item){
-       return .7 - Math.random();
+    answers.sort(function(a,b){
+        return Math.random() - 0.5;
    })
    return answers;
 }
+
+let randomized  = randomAnswers();
 
 function startTimer(){
     if(started == false){
@@ -79,7 +80,7 @@ function hide(cell){
 function setUp(){
    
     let answers = randomAnswers();
-    
+    console.log(answers);
     for( val in answers){
         const nk =  answers[val];
         engWords.forEach(function(element) {
@@ -113,11 +114,15 @@ function setUp(){
             box.clicked = false;
 
             Array.from(engMapToNum.keys()).forEach((k, i) => {
-                cell.value = engMapToNum.get(k);
+                for(let j = 0;j < answers.length ; j++){
+                   cell[j].value = engMapToNum.get(k);
+                }   
             })
             
             Array.from(itaMapToNum.keys()).forEach((k, i) => {
-                box.value = itaMapToNum.get(k);
+                for(let j = 0;j < m.length ; j++){
+                  box[i].value = itaMapToNum.get(k);
+                }  
             })
 
 
