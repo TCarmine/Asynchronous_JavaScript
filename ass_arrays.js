@@ -1,50 +1,48 @@
-// let cont = document.getElementById ("gridTable");
-// let p = document.getElementById("timer");
-// let clickedArray = [];
-// let numCompleted = 0;
+let cont = document.getElementById ("gridTable");
+let p = document.getElementById("timer");
+let clickedArray = [];
+let numCompleted = 0;
 
-//  let answers = [1,2,3,4,5,6,7,8,9];
-
-
-//  function randomAnswers(){
-//   answers.sort(function(item){
-//      return .6 - Math.random();
-//  })
-//  return answers;
-// }
-
-// let m = ['casa','house'];
-
-// answers = randomAnswers();
-// let engWords = ['house','gift','zoo','tidy','flat','to play',' to see','boy','ice cream']
+ let answers = [1,2,3,4,5,6,7,8,9];
 
 
-// let itaWords = ['casa','regalo','zoo','ordinato','appartamento','giocare','guardare','ragazzo','gelato'] 
+ function randomAnswers(){
+  answers.sort(function(item){
+     return .6 - Math.random();
+ })
+ return answers;
+}
 
-// let myMap = new Map();
+let m = ['casa','house'];
+
+answers = randomAnswers();
+let engWords = ['house','gift','zoo','tidy','flat','to play',' to see','boy','ice cream']
 
 
-// var newMap = new Map(); 
+let itaWords = ['casa','regalo','zoo','ordinato','appartamento','giocare','guardare','ragazzo','gelato'] 
 
-// var newMap2 = new Map(); 
+let myMap = new Map();
 
-// var pairsMap = new Map(); 
+
+let engMapToNum = new Map(); 
+
+let itaMapToNum = new Map(); 
+
+let pairsMap = new Map(); 
 
 // // keys.forEach((key, i) => result[key] = values[i]);
 
-// for( val in answers){
-//        const nk =  answers[val];
-//        engWords.forEach(function(element) {
+for( val in answers){
+       const nk =  answers[val];
+       engWords.forEach(function(element) {
          
-//           newMap.set(nk,engWords[val]);  
-//        })
-//        const jk =  answers[val];
-//        itaWords.forEach(function(element) {
-//            newMap2.set(jk,itaWords[val]);  
-//        })
-        
-   
-// }
+        engMapToNum.set(nk,engWords[val]);  
+       })
+       const jk =  answers[val];
+       itaWords.forEach(function(element) {
+        itaMapToNum.set(jk,itaWords[val]);  
+       })
+}
 
  for( val in engWords){
  
@@ -65,7 +63,7 @@ Array.from(pairsMap.keys()).forEach((k, i) => {
   }   
 })    
 
-// console.log('----------');
+console.log('----------');
 
 // // Array.from(pairsMap.keys()).forEach((k, i) => {
 // //   var values = pairsMap.get(k);
@@ -80,21 +78,11 @@ Array.from(pairsMap.keys()).forEach((k, i) => {
 
 
 
-// // Array.from(myMap.keys()).forEach((k, i) => {
-// //   const v = myMap.get(k);
-// //   const nk = answers[i];
-// //   newMap.set(nk, v);
-// // });
 
-<<<<<<< HEAD
-// // print map
-// // for (let [nk, v] of newMap){
-// //   console.log(nk, " -> ", v)
-// // }
-=======
 for (let [b, z] of pairsMap){
   console.log(b, " -> ", z)
 }
+
 
   // for (const v of newMap.values()) {
   //     if(v == 'ffa'){
@@ -112,7 +100,6 @@ for (let [b, z] of pairsMap){
 //       console.log(key, couples[key]);
 //   }
 // }
->>>>>>> fix_index
 
 // // console.log('------')
 // // for (let [jk, v] of newMap2){
@@ -248,17 +235,6 @@ for (let [b, z] of pairsMap){
 
 // // const obj = { 30: 'dadrandomAnswers', '4': 'kid', 19: 'teen', '100': 'grams'};
 
-<<<<<<< HEAD
-
-
-// // obj.randomAnswers();
-
-// // console.log(obj)
-
-
-
-=======
->>>>>>> fix_index
 
   
 // // function setUp(){
