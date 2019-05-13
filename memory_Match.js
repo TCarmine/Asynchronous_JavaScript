@@ -79,20 +79,24 @@ function hide(cell){
 
 function setUp(){
    
-    let answers = randomAnswers();
-    console.log(answers);
+    answers = randomAnswers();
+    
     for( val in answers){
         const nk =  answers[val];
         engWords.forEach(function(element) {
           
          engMapToNum.set(nk,engWords[val]);  
         })
-        answers = randomAnswers(); 
-        const jk =  answers[val];
-        itaWords.forEach(function(element) {
-         itaMapToNum.set(jk,itaWords[val]);  
-        })
     } 
+   
+    answers = randomAnswers();
+    for( el in answers){
+
+        const jk =  answers[el];
+        itaWords.forEach(function(element) {
+            itaMapToNum.set(jk,itaWords[el]);  
+        })
+    }
 
     for( val in engWords){
  
