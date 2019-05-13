@@ -51,24 +51,21 @@
 //         const nk =  engWords[val];
 //             itaWords.forEach(function(element) {
             
-//             pairsMap.set(nk,itaWords[val]);  
-//         } )
-// }        
+            pairsMap.set(nk,itaWords[val]);  
+        } )
+}        
 
-// for (let [b, z] of pairsMap){
-//   console.log(b, " -> ", z)
-// } 
-
-// // get a value from a Map after a string condition
-// Array.from(newMap.keys()).forEach((k, i) => {
-//       var values = newMap.get(k);
-//       for(let j = 0;j < m.length ; i++){
-//         if(m[i] == values){
-          
-//           console.log(newMap.get(k));
-//         }  
-//       }   
-// })    
+// get a value from a Map after a string condition
+Array.from(pairsMap.keys()).forEach((k, i) => {
+  var values = pairsMap.get(k);
+  for(let i = 0;i < m.length ; i++){
+    if(m[i] == values){
+      
+      console.log(m[i]);
+    }  
+  }   
+  
+})    
 
 // console.log('----------');
 
@@ -91,10 +88,33 @@
 // //   newMap.set(nk, v);
 // // });
 
+<<<<<<< HEAD
 // // print map
 // // for (let [nk, v] of newMap){
 // //   console.log(nk, " -> ", v)
 // // }
+=======
+for (let [b, z] of pairsMap){
+  console.log(b, " -> ", z)
+}
+
+  // for (const v of newMap.values()) {
+  //     if(v == 'ffa'){
+  //       clickedArray.push(v);
+  //       console.log(clickedArray); 
+  //       clickedArray.push(newMap.values().next());
+  //       console.log(clickedArray); 
+  //     }
+  // }  
+
+
+// for (const key of Object.keys(couples)) {
+//   if(couples[key]=='ciccio'){
+//       console.log(key + " -> " + couples[key]); 
+//       console.log(key, couples[key]);
+//   }
+// }
+>>>>>>> fix_index
 
 // // console.log('------')
 // // for (let [jk, v] of newMap2){
@@ -230,6 +250,7 @@
 
 // // const obj = { 30: 'dadrandomAnswers', '4': 'kid', 19: 'teen', '100': 'grams'};
 
+<<<<<<< HEAD
 
 
 // // obj.randomAnswers();
@@ -238,6 +259,8 @@
 
 
 
+=======
+>>>>>>> fix_index
 
   
 // // function setUp(){

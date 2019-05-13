@@ -25,7 +25,6 @@ html, body {
 }
 
 
-
 .container > div:nth-child(1n) {
   background-color: #136cf1;	
 }
