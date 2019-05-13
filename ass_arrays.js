@@ -58,7 +58,7 @@ for( val in engWords){
 // get a value from a Map after a string condition
 Array.from(pairsMap.keys()).forEach((k, i) => {
   let value = pairsMap.get(k);
-  let key = pairsMap.keys();
+
       for(let j = 0;j < m.length ; j++){
           if(m[j] == value){
               console.log(m[j]);

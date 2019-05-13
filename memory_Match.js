@@ -106,26 +106,53 @@ function setUp(){
            pairsMap.set(nk,itaWords[val]);  
        } )
     }  
-    
+
     for(let i=0; i<answers.length; i++){
-            cell = grid[i]; 
-            box  = boxes[i];
+        cell = grid[i]; 
+        console.log(cell);
+        answers = randomAnswers();
+        console.log(answers);
+        Array.from(engMapToNum.keys()).forEach((i, j) => {
+            
+           
+               cell.value = engMapToNum.get(i);
+         
+        })
+    }    
+    for(let i=0; i<answers.length; i++){
+        box  = boxes[i];
+        console.log(boxes[i])
+        let another = answers = randomAnswers();
+        console.log(answers);
+        Array.from(itaMapToNum.keys()).forEach((i, i) => {
+            
+              
+              box.value = itaMapToNum.get(i);
+         
+        })
+    }
+    for(let i=0; i<answers.length; i++){
+            
  
             cell.completed = false;
             cell.clicked = false;
 
             box.completed = false;
             box.clicked = false;
-
-            Array.from(engMapToNum.keys()).forEach((k, i) => {
+            
+            answers = randomAnswers();
+            Array.from(engMapToNum.keys()).forEach((k, j) => {
                 for(let j = 0;j < answers.length ; j++){
-                   cell[j].value = engMapToNum.get(k);
+               
+                   cell.value = engMapToNum.get(k);
                 }   
             })
             
-            Array.from(itaMapToNum.keys()).forEach((k, i) => {
+            answers = randomAnswers();
+            Array.from(itaMapToNum.keys()).forEach((k, j) => {
                 for(let j = 0;j < m.length ; j++){
-                  box[i].value = itaMapToNum.get(k);
+                  console.log(itaMapToNum.get(k));  
+                  box.value = itaMapToNum.get(k);
                 }  
             })
 
