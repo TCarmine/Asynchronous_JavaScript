@@ -1,4 +1,6 @@
 let cont = document.getElementById ("gridTable");
+
+let boxes = document.getElementById ("gridBox");
 let p = document.getElementById("timer");
 
 let interval;
@@ -66,6 +68,7 @@ function complete(cell){
 
 function setUp(){
     let grid = document.getElementsByName("cell");
+    let boxes = document.getElementsByName("cell");
     let answers = randomAnswers();
     for( val in answers){
         const nk =  answers[val];
@@ -89,12 +92,18 @@ function setUp(){
     }  
     
     for(let i=0; i<grid.length; i++){
-            let cellmatrix = grid[i];
-
+            let cell = grid[i];
+            let box  = boxes[i];
+ 
             cell.completed = false;
             cell.clicked = false;
+
+            box.completed = false;
+            box.clicked = false;
+
             for( val in engWords)
               cell.value = engMapToNum[val];
+              console.log(cell.value);
             }
 
             cell.addEventListener("mouseenter",function(){
@@ -106,6 +115,14 @@ function setUp(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "blue";
 
+            box.addEventListener("mouseenter",function(){
+                if(this.completed == false && this.clicked == false)
+                this.style.background = "orange";
+            });
+
+            box.addEventListener("mouseleave",function(){
+                if(this.completed == false && this.clicked == false)
+                this.style.background = "blue";    
             });
             //for keyboard input 
             document.addEventListener('keydown', function(event){
@@ -114,6 +131,7 @@ function setUp(){
                 }
             
             });
+
             // for reload the page on restart button click
             document.getElementById('restart').addEventListener('click', function(){
                 location.reload();
@@ -124,7 +142,7 @@ function setUp(){
                     return;
                 }
                 startTimer();
-                if(this.clicked == false && this.completed == false){
+                if(cell.clicked == false && cell.completed == false){
                     clickedArray.push(this);
                     reveal(this);
                     console.log(clickedArray[0], clickedArray[1]);
