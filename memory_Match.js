@@ -59,11 +59,11 @@ setUp();
 
 
 function hide(cell,i){
-    cell.style.backgroundColor = "blue";
-    cell.innerHTML = "";
-    cell.clicked = false;
+    cell[i].style.backgroundColor = "blue";
+    cell[i].innerHTML = "";
+    cell[i].clicked = false;
  }
- function reveal(cell[i],i){
+ function reveal(cell,i){
         cell[i].style.backgroundColor ="red";
         cell[i].innerHTML = cell.value;
         cell[i].clicked = true;
