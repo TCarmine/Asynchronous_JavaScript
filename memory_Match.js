@@ -15,7 +15,7 @@ let started = false;
 let time = 0;
 
 let clickedArray = [];
-let answers = [1,1,2,2,3,3,4,4,5];
+let answers = [1,2,3,4,5,6,7,8,9];
 
 let ready = true;
 let numCompleted = 0;
@@ -102,7 +102,7 @@ function setUp(){
     }  
     
     for(let i=0; i<grid.length; i++){
-            cell = grid[i];
+            cell = grid[i]; 
             box  = boxes[i];
  
             cell.completed = false;
@@ -111,10 +111,15 @@ function setUp(){
             box.completed = false;
             box.clicked = false;
 
-            for( val in engWords){
-              cell.value = engMapToNum[val];
-              console.log(engMapToNum[val]);
-            }
+            Array.from(engMapToNum.keys()).forEach((k, i) => {
+                cell.value = k;
+            })
+            
+            Array.from(itaMapToNum.keys()).forEach((k, i) => {
+                box.value = k;
+            })
+
+
 
             cell.addEventListener("mouseenter",function(){
                 if(this.completed == false && this.clicked == false)
