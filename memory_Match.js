@@ -1,7 +1,14 @@
 let cont = document.getElementById ("gridTable");
+let gridBox = document.getElementById ("gridBox");
 
-let boxes = document.getElementById ("gridBox");
+let grid = document.getElementsByName("cell");
+let boxes = document.getElementsByName("box");
 let p = document.getElementById("timer");
+
+let cell;
+console.log(cell);
+let box;
+
 
 let interval;
 let started = false;
@@ -43,33 +50,12 @@ function startTimer(){
 
 
 
-function randomAnswers(){
-     answers.sort(function(item){
-        return .6 - Math.random();
-    })
-    return answers;
-}
 
-function hide(cell){
-    cell.style.backgroundColor = "blue";
-    cell.innerHTML = "";
-    cell.clicked = false;
-}
-function reveal(cell){
-    cell.style.backgroundColor ="red";
-    cell.innerHTML = cell.value;
-    cell.clicked = true;
-}
-function complete(cell){
-    cell.completed = true;
-    numCompleted++;
-    cell.style.backgroundColor = "purple";
-}
 
 function setUp(){
-    let grid = document.getElementsByName("cell");
-    let boxes = document.getElementsByName("cell");
+   
     let answers = randomAnswers();
+    
     for( val in answers){
         const nk =  answers[val];
         engWords.forEach(function(element) {
@@ -92,8 +78,8 @@ function setUp(){
     }  
     
     for(let i=0; i<grid.length; i++){
-            let cell = grid[i];
-            let box  = boxes[i];
+            cell = grid[i];
+            box  = boxes[i];
  
             cell.completed = false;
             cell.clicked = false;
@@ -101,9 +87,9 @@ function setUp(){
             box.completed = false;
             box.clicked = false;
 
-            for( val in engWords)
+            for( val in engWords){
               cell.value = engMapToNum[val];
-              console.log(cell.value);
+              console.log(engMapToNum[val]);
             }
 
             cell.addEventListener("mouseenter",function(){
@@ -114,7 +100,7 @@ function setUp(){
             cell.addEventListener("mouseleave",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "blue";
-
+            });
             box.addEventListener("mouseenter",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "orange";
@@ -181,9 +167,9 @@ function setUp(){
                 }
             });
             
-            };
-            
     }
+}             
+    
 
     // timerId = function interval() {
     //     // do things
@@ -202,3 +188,26 @@ function setUp(){
     }.bind(this), 11000);
     
 // timerId();
+
+function randomAnswers(){
+    answers.sort(function(item){
+       return .6 - Math.random();
+   })
+   return answers;
+}
+
+function hide(cell){
+   cell.style.backgroundColor = "blue";
+   cell.innerHTML = "";
+   cell.clicked = false;
+}
+function reveal(cell){
+   cell.style.backgroundColor ="red";
+   cell.innerHTML = cell.value;
+   cell.clicked = true;
+}
+function complete(cell){
+   cell.completed = true;
+   numCompleted++;
+   cell.style.backgroundColor = "purple";
+}
