@@ -106,37 +106,42 @@ function setUp(){
     }  
     
     
-    Array.from(engMapToNum.keys()).forEach((k, i) => {
+    
         
-        for(let j=0; j<answers.length; j++){
-            cell[j] = grid[j]; 
-        
-            cell.completed = false;
-            cell.clicked = false;
-            let el = engMapToNum.get(k);
-            // console.log(k);
-            cell[j].value = el;
-            console.log(cell[j].value);
-        
-        }
-    })    
+    for( val in answers){   
+            engMapToNum.forEach(function(element){
+                for(let j=0; j<answers.length; j++){
+                        cell[j] = grid[j]; 
+                    
+                        cell.completed = false;
+                        cell.clicked = false;  
+                    let el = engMapToNum[val];
+                console.log(el);
+                cell[j].value = el;
+                console.log(cell[j].value);
+                console.log(cell.length);
+                }
+            }) 
+    }                
 
     console.log(' ********** ' )
     
-    Array.from(itaMapToNum.keys()).forEach((k, z) => {
+    for(val in itaMapToNum ) {
         
         for(let j=0; j<answers.length; j++){
             box[j] = boxes[j]; 
         
             box.completed = false;
             box.clicked = false;
-            let el = itaMapToNum.get(k);
-            // console.log(k);
+            let el = itaMapToNum[val];
+       
             box[j].value = el;
             console.log(box[j].value);
+            console.log(box.length);
+        
         
         }
-    })    
+    }  
 
     
     for(let i=0; i<answers.length; i++){
@@ -179,8 +184,8 @@ function setUp(){
                 }
                 startTimer();
                 if(cell.clicked == false && cell.completed == false){
-                    clickedArray.push(cell[i]);
-                    reveal(cell[i],i);
+                    clickedArray.push(cell[i].value);
+                    reveal(cell[i]);
                     console.log(clickedArray[0], clickedArray[1]);
                 }
                 
