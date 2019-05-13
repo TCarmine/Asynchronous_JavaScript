@@ -13,7 +13,7 @@ let numCompleted = 0;
  return answers;
 }
 
-let m = ['casa','house'];
+let m = ['house','casa'];
 
 answers = randomAnswers();
 let engWords = ['house','gift','zoo','tidy','flat','to play',' to see','boy','ice cream']
@@ -53,15 +53,36 @@ for( val in answers){
         } )
 }        
 
+// // get a value from a Map after a string condition
+// Array.from(pairsMap.keys()).forEach((k, i) => {
+//   var values = pairsMap.get(k);
+//   for(let i = 0;i < m.length ; i++){
+//       if(m[i] == values){
+//           console.log(m[i]);
+//       }  
+//   }   
+// })    
+
+
 // get a value from a Map after a string condition
-Array.from(pairsMap.keys()).forEach((k, i) => {
-  var values = pairsMap.get(k);
+Array.from(itaMapToNum.keys()).forEach((k, i) => {
+  var values = itaMapToNum.get(k);
   for(let i = 0;i < m.length ; i++){
       if(m[i] == values){
           console.log(m[i]);
-      }  
+      }
   }   
-})    
+}) 
+
+Array.from(engMapToNum.keys()).forEach((k, i) => {
+  var values = engMapToNum.get(k);
+  for(let i = 0;i < m.length ; i++){
+      if(m[i] == values){
+          console.log(m[i]);
+      }
+  }   
+}) 
+
 
 console.log('----------');
 
