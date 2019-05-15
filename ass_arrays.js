@@ -36,7 +36,7 @@ for( val in answers){
        const nk =  answers[val];
        engWords.forEach(function(element) {
          
-        engMapToNum.set(nk,engWords[val]);  
+       engMapToNum.set(nk,engWords[val]);  
        })
        const jk =  answers[val];
        itaWords.forEach(function(element) {
