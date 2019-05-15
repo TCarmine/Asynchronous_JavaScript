@@ -21,7 +21,7 @@ let ready = true;
 let numCompleted = 0;
 let timerId;
 
-let engWords = ['house','gift','zoo','tidy','flat','to play',' to see','boy','ice cream']
+let engWords = ['house','gift','zoo','tidy','flat','to play','to see','boy','ice cream']
 
 
 let itaWords = ['casa','regalo','zoo','ordinato','appartamento','giocare','guardare','ragazzo','gelato'] 
@@ -35,15 +35,18 @@ let itaMapToNum = new Map();
 let pairsMap = new Map(); 
 
 
-function randomAnswers(){
-    answers.sort(function(a,b){
-        return Math.random() - 0.5;
-   })
-   return answers;
-}
 
-let randomized  = randomAnswers();
 
+let rand = (array)=>{
+        array.sort(function(){
+                return Math.random() - 0.5;
+        })
+          return  array;
+}  
+
+  let randomized  = rand(answers);
+
+let engRand = rand(engWords);
 function startTimer(){
     if(started == false){
         interval = setInterval(function(){
@@ -53,22 +56,24 @@ function startTimer(){
         started = true;
     }
 }
+console.log(engRand);
+console.log(randomized);
 
 setUp();
 
 
 
-function hide(cell,i){
+function hide(cell){
     cell[i].style.backgroundColor = "blue";
     cell[i].innerHTML = "";
     cell[i].clicked = false;
  }
- function reveal(cell,i){
+ function reveal(cell){
         cell[i].style.backgroundColor ="red";
         cell[i].innerHTML = cell.value;
         cell[i].clicked = true;
  }
- function complete(cell,i){
+ function complete(cell){
     cell[i].completed = true;
     numCompleted++;
     cell[i].style.backgroundColor = "purple";
@@ -77,9 +82,7 @@ function hide(cell,i){
 
 function setUp(){
    
-    answers = randomAnswers();
-    
-    for( val in answers){
+   for( val in answers){
         const nk =  answers[val];
         engWords.forEach(function(element) {
           
@@ -87,7 +90,7 @@ function setUp(){
         })
     } 
    
-    answers = randomAnswers();
+   
     for( el in answers){
           
         const jk =  answers[el];
@@ -95,7 +98,7 @@ function setUp(){
             itaMapToNum.set(jk,itaWords[el]);  
         })
     }
-    answers = randomAnswers(); 
+   
     for( val in engWords){
         
         const nk =  engWords[val];
@@ -105,7 +108,16 @@ function setUp(){
        } )
     }  
     
+    // for (let [b, z] of engMapToNum){
+    //     console.log(b, " -> ", z)
+    // }
+
+    // for (let [b, z] of engWords){
+    //     console.log(b, " -> ", z)
+    // }
+  
     
+<<<<<<< HEAD
     
         
     for( val in answers){   
@@ -127,10 +139,46 @@ function setUp(){
     console.log(' ********** ' )
     
     for(val in itaMapToNum ) {
+=======
+     for (let i = 1;i < engWords.length; i++){
+        cell[i] = grid[i]; 
+        cell.completed = false;
+        cell.clicked = false;
+        engWords[i] =  answers[i]
+        cell[i].value = engWords[val];
+        console.log(answers);
+        console.log(engWords[i]);
+        console.log(cell[i].value);
+     }
+
+     
+
+
+    // Array.from(engWords.keys()).forEach((k, i) => {
+    //         cell[k] = grid[k]; 
+    //         cell.completed = false;
+    //         cell.clicked = false;
+    //         let el = engMapToNum.get(k);
+    //         // console.log(k);
+    //         cell[k].value = el;
+    //         console.log(cell[k].value);
+  
+    // })    
+    
+    // for (let [b, z] of engMapToNum){
+    //     console.log(b, " -> ", z)
+    //   }
+      
+      
+    console.log(' ********** ' )
+    
+    // Array.from(itaMapToNum.keys()).forEach((t, z) => {
+>>>>>>> abc
         
-        for(let j=0; j<answers.length; j++){
-            box[j] = boxes[j]; 
+    //     // for(let j=0; j<answers.length; j++){
+    //         box[t] = boxest[t]; 
         
+<<<<<<< HEAD
             box.completed = false;
             box.clicked = false;
             let el = itaMapToNum[val];
@@ -142,26 +190,37 @@ function setUp(){
         
         }
     }  
+=======
+    //         box.completed = false;
+    //         box.clicked = false;
+    //         let el = itaMapToNum.get(k);
+    //         // console.log(k);
+    //         box[t].value = el;
+    //         console.log(box[t].value);
+        
+    //     // }
+    // })    
+>>>>>>> abc
 
     
     for(let i=0; i<answers.length; i++){
             
  
-            cell.addEventListener("mouseenter",function(){
+            cell[i].addEventListener("mouseenter",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "orange";
             });
 
-            cell.addEventListener("mouseleave",function(){
+            cell[i].addEventListener("mouseleave",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "blue";
             });
-            box.addEventListener("mouseenter",function(){
+            box[i].addEventListener("mouseenter",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "orange";
             });
 
-            box.addEventListener("mouseleave",function(){
+            box[i].addEventListener("mouseleave",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "blue";    
             });
