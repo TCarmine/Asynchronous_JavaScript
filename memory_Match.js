@@ -44,7 +44,7 @@ let rand = (array)=>{
           return  array;
 }  
 
-  let randomized  = rand(answers);
+// let randomized  = rand(answers);
 
 let engRand = rand(engWords);
 function startTimer(){
@@ -63,20 +63,21 @@ setUp();
 
 
 
-function hide(cell){
-    cell[ind].style.backgroundColor = "blue";
-    cell[ind].innerHTML = "";
-    cell[ind].clicked = false;
+let hide = (cell)=>{
+    cell.style.backgroundColor = "blue";
+    cell.innerHTML = "";
+    cell.clicked = false;
  }
- function reveal(cell){
-        cell[ind].style.backgroundColor ="red";
-        cell[ind].innerHTML = cell.value;
-        cell[ind].clicked = true;
+
+ let reveal = (cell)=>{
+        cell.style.backgroundColor ="red";
+        cell.innerHTML = cell.value;
+        cell.clicked = true;
  }
- function complete(cell){
-    cell[ind].completed = true;
+ let complete = (cell) =>{
+    cell.completed = true;
     numCompleted++;
-    cell[ind].style.backgroundColor = "purple";
+    cell.style.backgroundColor = "purple";
  }
 
 
@@ -118,9 +119,9 @@ function setUp(){
   
     let randEng = rand(engWords);
     let randIta = rand(itaWords);
-    console.log(randEng); 
+    // console.log(randEng); 
 
-    console.log(randIta); 
+    // console.log(randIta); 
 
      
 
@@ -164,12 +165,11 @@ function setUp(){
     for(let ind =0; ind < randEng.length; ind++){
             
             cell[ind] = grid[ind]; 
-            console.log(cell[ind]);
-            console.log(randEng.length);
+          
             cell[ind].completed = false;
             cell[ind].clicked = false;
             cell[ind].value = randEng[ind];
-            console.log(cell[ind].value);
+           
 
             box[ind] = boxes[ind]; 
         
@@ -177,7 +177,7 @@ function setUp(){
             box[ind].clicked = false;
           
             box[ind].value = randIta[ind];
-            console.log(box[ind].value); 
+      
              
             cell[ind].addEventListener("mouseenter",function(){
                 if(this.completed == false && this.clicked == false)
@@ -216,9 +216,11 @@ function setUp(){
                 }
                 startTimer();
                 if(cell[ind].clicked == false && cell[ind].completed == false){
-                    clickedArray.push(cell[ind].value);
-                    reveal(cell[ind]);
-                    console.log(clickedArray[0], clickedArray[1]);
+                    if(box[ind].clicked == false && box[ind].completed == false){
+                        clickedArray.push(cell[ind].value);
+                        reveal(cell[ind]);
+                        console.log(clickedArray[0], clickedArray[1]);
+                    }    
                 }
                 
                 if(clickedArray.length == 2){
@@ -226,10 +228,10 @@ function setUp(){
                         Array.from(pairsMap.keys()).forEach((k, l) => {
                             let value = pairsMap.get(k);
                     
-                                for(let j = 0;j < m.length ; j++){
-                                    if(m[j] == value){
+                                for(let j = 0;j < clickedArray.length ; j++){
+                                    if(clickedArray[j] == value){
                                        
-                                      if(k == m[j+1] || k == m[j-1] ){
+                                      if(k == clickedArray[j+1] || k == clickedArray[j-1] ){
                                        
                                         flag = true;
                                         
@@ -259,8 +261,7 @@ function setUp(){
                           
                         setTimeout(function(){
                             
-                            hide(clickedArray[0]);
-                            hide(clickedArray[1]);
+                            hide(cell[ind]);
                             clickedArray = []; 
                             ready = true;
                             cont.style.border = "2px solid black";
@@ -273,6 +274,98 @@ function setUp(){
             
     }
 
+    for(let ind =0; ind < randEng.length; ind++){
+            
+        box[ind] = boxes[ind]; 
+        box[ind].completed = false;
+        box[ind].clicked = false;
+        box[ind].value = randIta[ind];
+           
+        box[ind].addEventListener("mouseenter",function(){
+            if(this.completed == false && this.clicked == false)
+            this.style.background = "orange";
+        });
+
+        box[ind].addEventListener("mouseleave",function(){
+            if(this.completed == false && this.clicked == false)
+            this.style.background = "blue";    
+        });
+        //for keyboard input 
+        document.addEventListener('keydown', function(event){
+            if(event.key > 0 && event.key < 10 ){
+                grid[event.key - 1].click();
+            }
+        
+        });
+
+        // for reload the page on restart button click
+        document.getElementById('restart').addEventListener('click', function(){
+            location.reload();
+        });
+
+        box[ind].addEventListener('click',function(){
+            if(ready == false){
+                return;
+            }
+            startTimer();
+            if(box[ind].clicked == false && cell[ind].completed == false){
+                    clickedArray.push(box[ind].value);
+                    reveal(box[ind]);
+                    console.log(clickedArray[0], clickedArray[1]);
+                   
+            }
+            
+            if(clickedArray.length == 2){
+                if(
+                    Array.from(pairsMap.keys()).forEach((k, l) => {
+                        let value = pairsMap.get(k);
+                
+                            for(let j = 0;j < clickedArray.length ; j++){
+                                if(clickedArray[j] == value){
+                                   
+                                  if(k == clickedArray[j+1] || k == clickedArray[j-1] ){
+                                   
+                                    flag = true;
+                                    
+                                  }   
+                                }
+                                        
+                            }
+                    
+                      }) 
+                ){
+                    ready = false;
+                    complete(clickedArray[0]); 
+                    complete(clickedArray[1]);
+                    clickedArray = []; 
+                    ready = true;
+                    cont.style.border = "2px solid black";
+                
+                    if( numCompleted == 8 ){
+                    alert("You won in "+ time + " seconds!" );
+                    clearInterval(interval);
+                    }
+
+                }else{
+                    ready = false;
+                    cont.style.border = "2px solid red";
+                    
+                      
+                    setTimeout(function(){
+                        
+                        hide(cell[ind]);
+                        clickedArray = []; 
+                        ready = true;
+                        cont.style.border = "2px solid black";
+                    },900);
+                    
+                }
+                
+            }
+        });
+        
+}
+
     timerId = setTimeout(function(){
                     
         clearInterval(interval);
@@ -281,7 +374,7 @@ function setUp(){
             alert("You are now logged out.")
             //location.href = 'logout.html'
         }
-    }.bind(this), 11000);
+    }.bind(this), 7000);
 }             
     
 
