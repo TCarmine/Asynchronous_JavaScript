@@ -56,27 +56,27 @@ function startTimer(){
         started = true;
     }
 }
-console.log(engRand);
-console.log(randomized);
+// console.log(engRand);
+// console.log(randomized);
 
 setUp();
 
 
 
 function hide(cell){
-    cell[i].style.backgroundColor = "blue";
-    cell[i].innerHTML = "";
-    cell[i].clicked = false;
+    cell[ind].style.backgroundColor = "blue";
+    cell[ind].innerHTML = "";
+    cell[ind].clicked = false;
  }
  function reveal(cell){
-        cell[i].style.backgroundColor ="red";
-        cell[i].innerHTML = cell.value;
-        cell[i].clicked = true;
+        cell[ind].style.backgroundColor ="red";
+        cell[ind].innerHTML = cell.value;
+        cell[ind].clicked = true;
  }
  function complete(cell){
-    cell[i].completed = true;
+    cell[ind].completed = true;
     numCompleted++;
-    cell[i].style.backgroundColor = "purple";
+    cell[ind].style.backgroundColor = "purple";
  }
 
 
@@ -116,40 +116,13 @@ function setUp(){
     //     console.log(b, " -> ", z)
     // }
   
-    
-<<<<<<< HEAD
-    
-        
-    for( val in answers){   
-            engMapToNum.forEach(function(element){
-                for(let j=0; j<answers.length; j++){
-                        cell[j] = grid[j]; 
-                    
-                        cell.completed = false;
-                        cell.clicked = false;  
-                    let el = engMapToNum[val];
-                console.log(el);
-                cell[j].value = el;
-                console.log(cell[j].value);
-                console.log(cell.length);
-                }
-            }) 
-    }                
+    let randEng = rand(engWords);
+    let randIta = rand(itaWords);
+    console.log(randEng); 
 
-    console.log(' ********** ' )
-    
-    for(val in itaMapToNum ) {
-=======
-     for (let i = 1;i < engWords.length; i++){
-        cell[i] = grid[i]; 
-        cell.completed = false;
-        cell.clicked = false;
-        engWords[i] =  answers[i]
-        cell[i].value = engWords[val];
-        console.log(answers);
-        console.log(engWords[i]);
-        console.log(cell[i].value);
-     }
+    console.log(randIta); 
+
+     
 
      
 
@@ -173,24 +146,10 @@ function setUp(){
     console.log(' ********** ' )
     
     // Array.from(itaMapToNum.keys()).forEach((t, z) => {
->>>>>>> abc
         
     //     // for(let j=0; j<answers.length; j++){
     //         box[t] = boxest[t]; 
         
-<<<<<<< HEAD
-            box.completed = false;
-            box.clicked = false;
-            let el = itaMapToNum[val];
-       
-            box[j].value = el;
-            console.log(box[j].value);
-            console.log(box.length);
-        
-        
-        }
-    }  
-=======
     //         box.completed = false;
     //         box.clicked = false;
     //         let el = itaMapToNum.get(k);
@@ -200,27 +159,41 @@ function setUp(){
         
     //     // }
     // })    
->>>>>>> abc
 
     
-    for(let i=0; i<answers.length; i++){
+    for(let ind =0; ind < randEng.length; ind++){
             
- 
-            cell[i].addEventListener("mouseenter",function(){
+            cell[ind] = grid[ind]; 
+            console.log(cell[ind]);
+            console.log(randEng.length);
+            cell[ind].completed = false;
+            cell[ind].clicked = false;
+            cell[ind].value = randEng[ind];
+            console.log(cell[ind].value);
+
+            box[ind] = boxes[ind]; 
+        
+            box[ind].completed = false;
+            box[ind].clicked = false;
+          
+            box[ind].value = randIta[ind];
+            console.log(box[ind].value); 
+             
+            cell[ind].addEventListener("mouseenter",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "orange";
             });
 
-            cell[i].addEventListener("mouseleave",function(){
+            cell[ind].addEventListener("mouseleave",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "blue";
             });
-            box[i].addEventListener("mouseenter",function(){
+            box[ind].addEventListener("mouseenter",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "orange";
             });
 
-            box[i].addEventListener("mouseleave",function(){
+            box[ind].addEventListener("mouseleave",function(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "blue";    
             });
@@ -237,20 +210,20 @@ function setUp(){
                 location.reload();
             });
 
-            cell.addEventListener('click',function(){
+            cell[ind].addEventListener('click',function(){
                 if(ready == false){
                     return;
                 }
                 startTimer();
-                if(cell.clicked == false && cell.completed == false){
-                    clickedArray.push(cell[i].value);
-                    reveal(cell[i]);
+                if(cell[ind].clicked == false && cell[ind].completed == false){
+                    clickedArray.push(cell[ind].value);
+                    reveal(cell[ind]);
                     console.log(clickedArray[0], clickedArray[1]);
                 }
                 
                 if(clickedArray.length == 2){
                     if(
-                        Array.from(pairsMap.keys()).forEach((k, i) => {
+                        Array.from(pairsMap.keys()).forEach((k, l) => {
                             let value = pairsMap.get(k);
                     
                                 for(let j = 0;j < m.length ; j++){
