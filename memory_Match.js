@@ -15,7 +15,6 @@ let started = false;
 let time = 0;
 
 let clickedArray = [];
-let answers = [1,2,3,4,5,6,7,8,9];
 
 let ready = true;
 let numCompleted = 0;
@@ -34,7 +33,8 @@ let itaMapToNum = new Map();
 
 let pairsMap = new Map(); 
 
-
+let itaCopy = itaWords;
+let engCopy = engWords;
 
 
 let rand = (array)=>{
@@ -46,6 +46,10 @@ let rand = (array)=>{
 
 // let randomized  = rand(answers);
 
+
+
+setUp();
+
 let engRand = rand(engWords);
 function startTimer(){
     if(started == false){
@@ -56,11 +60,6 @@ function startTimer(){
         started = true;
     }
 }
-// console.log(engRand);
-// console.log(randomized);
-
-setUp();
-
 
 
 let hide = (cell)=>{
@@ -83,23 +82,6 @@ let hide = (cell)=>{
 
 function setUp(){
    
-   for( val in answers){
-        const nk =  answers[val];
-        engWords.forEach(function(element) {
-          
-         engMapToNum.set(nk,engWords[val]);  
-        })
-    } 
-   
-   
-    for( el in answers){
-          
-        const jk =  answers[el];
-        itaWords.forEach(function(element) {
-            itaMapToNum.set(jk,itaWords[el]);  
-        })
-    }
-   
     for( val in engWords){
         
         const nk =  engWords[val];
@@ -108,76 +90,20 @@ function setUp(){
            pairsMap.set(nk,itaWords[val]);  
        } )
     }  
-    
-    // for (let [b, z] of engMapToNum){
-    //     console.log(b, " -> ", z)
-    // }
-
-    // for (let [b, z] of engWords){
-    //     console.log(b, " -> ", z)
-    // }
-  
-    let randEng = rand(engWords);
-    let randIta = rand(itaWords);
-    // console.log(randEng); 
-
-    // console.log(randIta); 
-
-     
-
-     
-
-
-    // Array.from(engWords.keys()).forEach((k, i) => {
-    //         cell[k] = grid[k]; 
-    //         cell.completed = false;
-    //         cell.clicked = false;
-    //         let el = engMapToNum.get(k);
-    //         // console.log(k);
-    //         cell[k].value = el;
-    //         console.log(cell[k].value);
-  
-    // })    
-    
-    // for (let [b, z] of engMapToNum){
-    //     console.log(b, " -> ", z)
-    //   }
-      
-      
+           
     console.log(' ********** ' )
     
-    // Array.from(itaMapToNum.keys()).forEach((t, z) => {
-        
-    //     // for(let j=0; j<answers.length; j++){
-    //         box[t] = boxest[t]; 
-        
-    //         box.completed = false;
-    //         box.clicked = false;
-    //         let el = itaMapToNum.get(k);
-    //         // console.log(k);
-    //         box[t].value = el;
-    //         console.log(box[t].value);
-        
-    //     // }
-    // })    
 
-    
-    for(let ind =0; ind < randEng.length; ind++){
+    let randEng = rand(engCopy);
+    for(let ind =0; ind < engWords.length; ind++){
             
             cell[ind] = grid[ind]; 
           
             cell[ind].completed = false;
             cell[ind].clicked = false;
-            cell[ind].value = randEng[ind];
-           
-
-            box[ind] = boxes[ind]; 
-        
-            box[ind].completed = false;
-            box[ind].clicked = false;
           
-            box[ind].value = randIta[ind];
-      
+            cell[ind].value = randEng[ind];
+                        
              
             cell[ind].addEventListener("mouseenter",function(){
                 if(this.completed == false && this.clicked == false)
@@ -188,15 +114,7 @@ function setUp(){
                 if(this.completed == false && this.clicked == false)
                 this.style.background = "blue";
             });
-            box[ind].addEventListener("mouseenter",function(){
-                if(this.completed == false && this.clicked == false)
-                this.style.background = "orange";
-            });
-
-            box[ind].addEventListener("mouseleave",function(){
-                if(this.completed == false && this.clicked == false)
-                this.style.background = "blue";    
-            });
+            
             //for keyboard input 
             document.addEventListener('keydown', function(event){
                 if(event.key > 0 && event.key < 10 ){
@@ -273,20 +191,21 @@ function setUp(){
             });
             
     }
-
-    for(let ind =0; ind < randEng.length; ind++){
+    let randIta = rand(itaCopy);
+    for(let index =0; index < itaWords.length; index++){
             
-        box[ind] = boxes[ind]; 
-        box[ind].completed = false;
-        box[ind].clicked = false;
-        box[ind].value = randIta[ind];
-           
-        box[ind].addEventListener("mouseenter",function(){
+        box[index] = boxes[index]; 
+        box[index].completed = false;
+        box[index].clicked = false;
+
+        
+        box[index].value = randIta[index];
+        box[index].addEventListener("mouseenter",function(){
             if(this.completed == false && this.clicked == false)
             this.style.background = "orange";
         });
 
-        box[ind].addEventListener("mouseleave",function(){
+        box[index].addEventListener("mouseleave",function(){
             if(this.completed == false && this.clicked == false)
             this.style.background = "blue";    
         });
@@ -303,15 +222,15 @@ function setUp(){
             location.reload();
         });
 
-        box[ind].addEventListener('click',function(){
+        box[index].addEventListener('click',function(){
             if(ready == false){
                 return;
             }
             startTimer();
-            if(box[ind].clicked == false && cell[ind].completed == false){
-                    clickedArray.push(box[ind].value);
-                    reveal(box[ind]);
-                    console.log(clickedArray[0], clickedArray[1]);
+            if(box[index].clicked == false && box[index].completed == false){
+                    clickedArray.push(box[index].value);
+                    reveal(box[index]);
+                    console.log(clickedArray[index]);
                    
             }
             
@@ -321,9 +240,9 @@ function setUp(){
                         let value = pairsMap.get(k);
                 
                             for(let j = 0;j < clickedArray.length ; j++){
-                                if(clickedArray[j] == value){
+                                if(clickedArray[j+ind] == value){
                                    
-                                  if(k == clickedArray[j+1] || k == clickedArray[j-1] ){
+                                  if(k == clickedArray[ind+j+1] || k == clickedArray[ind+j-1] ){
                                    
                                     flag = true;
                                     
@@ -353,7 +272,7 @@ function setUp(){
                       
                     setTimeout(function(){
                         
-                        hide(cell[ind]);
+                        hide(box[index]);
                         clickedArray = []; 
                         ready = true;
                         cont.style.border = "2px solid black";
@@ -374,7 +293,7 @@ function setUp(){
             alert("You are now logged out.")
             //location.href = 'logout.html'
         }
-    }.bind(this), 7000);
+    }.bind(this), 50000);
 }             
     
 
