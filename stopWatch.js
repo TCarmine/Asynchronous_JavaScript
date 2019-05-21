@@ -1,9 +1,10 @@
 let btntimer = document.getElementById('start');
-let btnholder = document.getElementById ('restart');
+let btnrestart = document.getElementById ('restart');
 let btnrecord = document.getElementById('record');
 
+let box = document.getElementById('box');
 let p = document.getElementById('holdTimer');
-let ps = document.getElementById('showTime');
+
 
 let time = 0;
 let started = false;
@@ -18,8 +19,7 @@ function startTimer(){
         started = true;
     } else {
         clearInterval(interval);
-         ps.innerHTML=""+time;  
-         started = false;
+            started = false;
     }
     
 }
@@ -28,7 +28,10 @@ btntimer.addEventListener('click', function(){
     startTimer();
 })
 
-btnholder.addEventListener('click',function(){
+btnrecord.addEventListener('click',function(){
+    let ps = document.createElement('p');
+    ps.innerHTML=""+time;  
+    document.body.appendChild(ps); 
   
 
 
