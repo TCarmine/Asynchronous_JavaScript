@@ -14,8 +14,8 @@ function startTimer(){
     if(started == false){
             interval = setInterval(function(){
                 time++;
-                p.innerHTML = " " + time;
-            },50)
+                p.innerHTML = "0."+time;;
+            },100)
         started = true;
     } else {
         clearInterval(interval);
@@ -30,7 +30,7 @@ btntimer.addEventListener('click', function(){
 
 btnrecord.addEventListener('click',function(){
     let ps = document.createElement('p');
-    ps.innerHTML=""+time;  
+    ps.innerHTML="0."+time;  
     document.body.appendChild(ps); 
   
 
