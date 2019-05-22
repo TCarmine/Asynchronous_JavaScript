@@ -3,6 +3,7 @@ let btnrestart = document.getElementById ('restart');
 let btnrecord = document.getElementById('record');
 
 let box = document.getElementById('box');
+let divP = document.getElementById('recTimes');
 let p = document.getElementById('holdTimer');
 
 
@@ -10,11 +11,16 @@ let time = 0;
 let started = false;
 
 p.innerHTML = " "+ time;
+
+// function insertAfter(el, referenceNode) {
+//     referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+// }
+
 function startTimer(){
     if(started == false){
             interval = setInterval(function(){
                 time++;
-                p.innerHTML = "0."+time;;
+                p.innerHTML = ""+time;;
             },100)
         started = true;
     } else {
@@ -29,10 +35,20 @@ btntimer.addEventListener('click', function(){
 })
 
 btnrecord.addEventListener('click',function(){
+    // let divP = document.createElement('div');
+    // // inserting div for dinamic paragrahs
+    
+    // insertAfter(divP, box);
+    // divP.setAttribute("id","recTimes");
     let ps = document.createElement('p');
-    ps.innerHTML="0."+time;  
-    document.body.appendChild(ps); 
-  
+    divP.appendChild(ps);
+    ps.setAttribute("id","recorded")
+    ps.innerHTML=""+time;  
+    
+})
 
-
+btnrestart.addEventListener('click',function(){
+    time = 0;
+    p.innerHTML = ""+time;
+    document.getElementById('recTimes').removeChild();
 })
