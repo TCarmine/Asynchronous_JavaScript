@@ -8,7 +8,11 @@ let p = document.getElementById('holdTimer');
 
 
 let time = 0;
+
+
 let started = false;
+
+
 
 p.innerHTML = " "+ time;
 
@@ -20,7 +24,8 @@ function startTimer(){
     if(started == false){
             interval = setInterval(function(){
                 time++;
-                p.innerHTML = ""+time;;
+                let sec  = time / 10;   
+                p.innerHTML = ""+sec;;
             },100)
         started = true;
     } else {
@@ -40,16 +45,17 @@ btnrecord.addEventListener('click',function(){
     let ps = document.createElement('p');
     // insertAfter(divP, box);
     // divP.setAttribute("class","recTimes");
-    
+    let sec  = time / 10; 
     divP.append(ps);
     ps.setAttribute("class","recorded");
-    ps.innerHTML=""+time;  
+    ps.innerHTML=""+sec;  
     
 })
 
 btnrestart.addEventListener('click',function(){
     time = 0;
-    p.innerHTML = ""+time;
+    let sec  = time / 10;  
+    p.innerHTML = ""+sec;
     
     while (divP.firstChild) {
       divP.removeChild(divP.firstChild);
