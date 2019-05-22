@@ -3,7 +3,7 @@ let btnrestart = document.getElementById ('restart');
 let btnrecord = document.getElementById('record');
 
 let box = document.getElementById('box');
-let divP = document.getElementById('recTimes');
+let divP = document.getElementById('recTime');
 let p = document.getElementById('holdTimer');
 
 
@@ -12,9 +12,9 @@ let started = false;
 
 p.innerHTML = " "+ time;
 
-// function insertAfter(el, referenceNode) {
-//     referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
-// }
+function insertAfter(el, referenceNode) {
+    referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+}
 
 function startTimer(){
     if(started == false){
@@ -36,13 +36,13 @@ btntimer.addEventListener('click', function(){
 
 btnrecord.addEventListener('click',function(){
     // let divP = document.createElement('div');
-    // // inserting div for dinamic paragrahs
-    
-    // insertAfter(divP, box);
-    // divP.setAttribute("id","recTimes");
+    // inserting div for dinamic paragrahs
     let ps = document.createElement('p');
-    divP.appendChild(ps);
-    ps.setAttribute("id","recorded")
+    // insertAfter(divP, box);
+    // divP.setAttribute("class","recTimes");
+    
+    divP.append(ps);
+    ps.setAttribute("class","recorded");
     ps.innerHTML=""+time;  
     
 })
@@ -50,5 +50,8 @@ btnrecord.addEventListener('click',function(){
 btnrestart.addEventListener('click',function(){
     time = 0;
     p.innerHTML = ""+time;
-    document.getElementById('recTimes').removeChild();
+    
+    while (divP.firstChild) {
+      divP.removeChild(divP.firstChild);
+    } 
 })
